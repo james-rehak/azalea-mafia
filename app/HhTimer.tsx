@@ -1,0 +1,48 @@
+"use client";
+import { useEffect, useState } from "react";
+
+function getNextFriday6pm(now: Date) {
+  const dayOfWeek = now.getDay(); // 0=Sun, 1=Mon, ..., 5=Fri, 6=Sat
+  const daysUntilFriday = (5 - dayOfWeek + 7) % 7 || 7; // If today is Friday, go to next Friday
+  const nextFriday = new Date(now);
+  nextFriday.setDate(now.getDate() + daysUntilFriday);
+  nextFriday.setHours(18, 0, 0, 0); // 6pm
+  return nextFriday;
+}
+
+function getTimeRemaining(target: Date) {
+  const now = new Date();
+  const diff = target.getTime() - now.getTime();
+  if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+  return { days, hours, minutes, seconds };
+}
+
+export default function HhTimer() {
+  // Initialize with zeros to avoid SSR/client mismatch
+  const [remaining, setRemaining] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  useEffect(() => {
+    const updateCountdown = () => {
+      const nextFriday = getNextFriday6pm(new Date());
+      setRemaining(getTimeRemaining(nextFriday));
+    };
+    updateCountdown(); // Set initial value on client
+    const interval = setInterval(updateCountdown, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="flex flex-1 w-full max-w-3xl flex-col items-center justify-center py-6 px-4 mx-auto">
+      <h2 className="text-3xl font-bold text-green-700 mb-4 text-center">
+        Countdown to Happy Hour!
+      </h2>
+      <div className="text-2xl font-mono text-green-900 mb-2">
+        {remaining.days}d {remaining.hours}h {remaining.minutes}m {remaining.seconds}s
+      </div>
+    </div>
+  );
+}
