@@ -26,7 +26,7 @@ export default function DrinkOrder() {
               alert(`You ordered a ${drink.name}${drink.eggs ? ` please bring ${drink.eggs} egg${drink.eggs > 1 ? 's' : ''}` : ''}!`);
             }}
           >
-            <span>{drink.name}</span>
+            <span className="text-black">{drink.name}</span>
             {drink.eggs > 0 &&
               <span
                 className="text-sm text-yellow-600 whitespace-nowrap "
