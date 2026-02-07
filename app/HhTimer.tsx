@@ -22,6 +22,10 @@ function getTimeRemaining(target: Date) {
   return { days, hours, minutes, seconds };
 }
 
+function getRandomPoint():number {
+  return 0.3 + Math.random() * 0.7;
+}
+
 export default function HhTimer() {
   // Initialize with zeros to avoid SSR/client mismatch
   const [remaining, setRemaining] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -39,11 +43,17 @@ export default function HhTimer() {
   return (
     <div
       className="flex flex-1 w-full max-w-3xl flex-col items-center justify-center py-6 px-4 mx-auto cursor-pointer"
-      onClick={() => confetti({
-        particleCount: 220,
-        spread: 140,
-        origin: { y: 0.6 },
-      })}
+      onClick={() => {
+        Array.from({ length: 3 }).forEach((_, i) => {
+          setTimeout(() => {
+            confetti({
+              particleCount: 220,
+              spread: 120 + (i * 25),
+              origin: { x: getRandomPoint(), y: getRandomPoint() },
+            });
+          }, i * 500);
+        });
+      }}
       title="🎉"
     >
       <h2 className="text-3xl font-bold text-green-700 mb-4 text-center">
