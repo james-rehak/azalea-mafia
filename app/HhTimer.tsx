@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import confetti from "canvas-confetti";
 
 function getNextFriday6pm(now: Date) {
   const dayOfWeek = now.getDay(); // 0=Sun, 1=Mon, ..., 5=Fri, 6=Sat
@@ -36,11 +37,21 @@ export default function HhTimer() {
   }, []);
 
   return (
-    <div className="flex flex-1 w-full max-w-3xl flex-col items-center justify-center py-6 px-4 mx-auto">
+    <div
+      className="flex flex-1 w-full max-w-3xl flex-col items-center justify-center py-6 px-4 mx-auto cursor-pointer"
+      onClick={() => confetti({
+        particleCount: 220,
+        spread: 140,
+        origin: { y: 0.6 },
+      })}
+      title="🎉"
+    >
       <h2 className="text-3xl font-bold text-green-700 mb-4 text-center">
         Countdown to Happy Hour!
       </h2>
-      <div className="text-2xl font-mono text-green-900 mb-2">
+      <div
+        className="text-2xl font-mono text-green-900 mb-2"
+      >
         {remaining.days}d {remaining.hours}h {remaining.minutes}m {remaining.seconds}s
       </div>
     </div>
