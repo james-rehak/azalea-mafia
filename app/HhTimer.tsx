@@ -47,8 +47,8 @@ export default function HhTimer() {
         Array.from({ length: 3 }).forEach((_, i) => {
           setTimeout(() => {
             confetti({
-              particleCount: 180 + (i * 10),
-              spread: 140,
+              particleCount: 220,
+              spread: 120 + (i * 25),
               origin: { x: getRandomPoint(), y: getRandomPoint() },
             });
           }, i * 500);
