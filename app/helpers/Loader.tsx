@@ -14,7 +14,7 @@ export default function Loader({ loaderKey }: LoaderProps) {
   const petIndex = loaderKey % pets.length;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-amber-950/40">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm">
       <Image
         width={100}
         height={100}
