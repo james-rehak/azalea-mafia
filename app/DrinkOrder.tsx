@@ -13,7 +13,7 @@ const drinks = [
 
 export default function DrinkOrder() {
   return (
-    <div className="flex flex-col items-center gap-6 overflow-y-auto max-h-96">
+    <div className="flex flex-col items-center gap-6 overflow-y-auto max-h-96 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
       <h2
         className="text-3xl font-bold text-green-700 mb-6 text-center"
         title="Drink Order 🍸"

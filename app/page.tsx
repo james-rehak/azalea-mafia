@@ -68,24 +68,24 @@ export default function Home() {
 					))}
 				</div>
 			</header>
-			<main className="flex-1 flex items-center justify-center relative" style={{ minHeight: 600 }}>
+			<main className="flex-1 flex items-center justify-center relative " style={{ minHeight: 600 }}>
 				{/* Triangle layout for >915px */}
 				<div className="relative mx-auto pyramid-layout w-250 h-175">
 					{/* Top section */}
 					<div className={`absolute left-1/2 top-0 -translate-x-1/2 ${animClass}`} style={{ width: 450, height: 315, zIndex: 2 }}>
-						<div className="w-full h-full bg-white border border-green-700 rounded-2xl shadow-md flex flex-col justify-center items-center p-8 overflow-auto" onClick={() => handleSectionClick(order[0])}>
+						<div className="w-full h-full bg-white border border-green-950 rounded-2xl shadow-neo-green flex flex-col justify-center items-center p-8 overflow-auto ">
 							{sectionMap[order[0]].content}
 						</div>
 					</div>
 					{/* Bottom left */}
 					<div className={`absolute left-0 bottom-0 ${animClass}`} style={{ width: 450, height: 315, zIndex: 1 }}>
-						<div className="w-full h-full bg-white border border-green-700 rounded-2xl shadow-md flex flex-col justify-center items-center p-6 overflow-auto">
+						<div className="w-full h-full bg-white border border-green-950 rounded-2xl shadow-neo-green flex flex-col justify-center items-center p-6 overflow-auto ">
 							{sectionMap[order[1]].content}
 						</div>
 					</div>
 					{/* Bottom right */}
 					<div className={`absolute right-0 bottom-0 ${animClass}`} style={{ width: 450, height: 315, zIndex: 1 }}>
-						<div className="w-full h-full bg-white border border-green-700 rounded-2xl shadow-md flex flex-col justify-center items-center p-6 overflow-auto">
+						<div className="w-full h-full bg-white border border-green-950 rounded-2xl shadow-neo-green flex flex-col justify-center items-center p-6 overflow-auto ">
 							{sectionMap[order[2]].content}
 						</div>
 					</div>
@@ -93,7 +93,7 @@ export default function Home() {
 				{/* Vertical layout for ≤915px */}
 				<div className="vertical-layout flex-col gap-6 w-full max-w-md mx-auto pt-8" style={{ display: 'none' }}>
 					{order.map((key) => (
-						<div key={key} className="bg-white border border-green-700 rounded-2xl shadow-md flex flex-col justify-center items-center p-6">
+						<div key={key} className="bg-white border border-green-950 rounded-2xl shadow-neo-green flex flex-col justify-center items-center p-6">
 							{sectionMap[key].content}
 						</div>
 					))}
