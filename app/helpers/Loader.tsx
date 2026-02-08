@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 type LoaderProps = {
   loaderKey: number;
 };
@@ -12,8 +14,13 @@ export default function Loader({ loaderKey }: LoaderProps) {
   const petIndex = loaderKey % pets.length;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-amber-600/40">
-      <img className="h-100 w-100 animate-spin" src={pets[petIndex]} alt="Loading..." />
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-amber-950/40">
+      <Image
+        width={100}
+        height={100}
+        className="h-100 w-100 animate-spin"
+        src={pets[petIndex]}
+        alt="Loading..."/>
     </div>
   );
 }

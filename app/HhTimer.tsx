@@ -59,9 +59,7 @@ export default function HhTimer() {
       <h2 className="text-3xl font-bold text-green-700 mb-4 text-center">
         Countdown to Happy Hour!
       </h2>
-      <div
-        className="text-2xl font-mono text-green-900 mb-2 text-center"
-      >
+      <div className="text-2xl font-mono text-green-900 mb-2 text-center">
         {remaining.days} Days {remaining.hours} Hours {remaining.minutes} Minutes {remaining.seconds} Seconds
       </div>
     </div>
