@@ -24,7 +24,7 @@ export default function DrinkOrder() {
         {drinks.map((drink) => (
           <button
             key={drink.name}
-            className={`flex items-center justify-between px-4 py-3 rounded-lg border ${
+            className={`flex items-center justify-between px-4 py-3 rounded-lg border cursor-pointer ${
               drink.eggs ? 'bg-yellow-100 border-yellow-400' : 'bg-white border-gray-300'
             } hover:bg-gray-50 transition-colors`}
             onClick={() => {

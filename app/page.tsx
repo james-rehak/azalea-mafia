@@ -3,6 +3,7 @@ import { useState } from "react";
 import { GiSpotedFlower } from "react-icons/gi";
 import HhTimer from "./HhTimer";
 import DrinkOrder from "./DrinkOrder";
+import Loader from "./helpers/Loader"
 
 const sections = [
 	{
@@ -35,8 +36,17 @@ const sections = [
 
 export default function Home() {
 	const [order, setOrder] = useState(["welcome", "timer", "drinks"]);
+	const [loading, setLoading] = useState(false);
+	const [loaderKey, setLoaderKey] = useState(0);
+
 	const handleSectionClick = (key: string) => {
-		console.log("handleSectionClick", key);
+		setLoaderKey((prev) => prev + 1);
+		setLoading(true);
+
+		setTimeout(() => {
+			setLoading(false);
+		}, 1500);
+
 		if (order[0] === key) return;
 		// Move clicked section to top, rotate others
 		const newOrder = [key, ...order.filter((k) => k !== key)];
@@ -51,23 +61,25 @@ export default function Home() {
 
 	return (
 		<div className="flex min-h-screen flex-col bg-[#FFF9F3] font-sans">
-			<header className="w-full bg-green-800 py-4 px-8 flex items-center justify-between">
-				<div className="flex items-center gap-3">
-					<GiSpotedFlower className="h-8 w-8 text-pink-500" />
-					<h1 className="text-2xl font-bold text-pink-500">Azalea Mafia</h1>
-				</div>
-				<div className="flex gap-6 text-pink-500 font-semibold">
-					{sections.map((s) => (
-						<span
-							className="hover:text-pink-800 hover:cursor-pointer hover:italic"
-							key={s.key}
-							onClick={() => handleSectionClick(s.key)}
-						>
-							{s.name}
-						</span>
-					))}
-				</div>
-			</header>
+			<div className="w-full px-4 md:px-12">
+				<header className="w-full bg-green-800 py-4 px-8 flex items-center justify-between border-green-950 rounded-2xl shadow-neo-green ">
+					<div className="flex items-center gap-3">
+						<GiSpotedFlower className="h-8 w-8 text-pink-500" />
+						<h1 className="text-2xl font-bold text-pink-500">Azalea Mafia</h1>
+					</div>
+					<div className="flex gap-6 text-pink-500 font-semibold">
+						{sections.map((s) => (
+							<span
+								className="hover:text-pink-800 hover:cursor-pointer hover:italic transition-colors duration-300"
+								key={s.key}
+								onClick={() => handleSectionClick(s.key)}
+							>
+								{s.name}
+							</span>
+						))}
+					</div>
+				</header>
+			</div>
 			<main className="flex-1 flex items-center justify-center relative " style={{ minHeight: 600 }}>
 				{/* Triangle layout for >915px */}
 				<div className="relative mx-auto pyramid-layout w-250 h-175">
@@ -99,6 +111,11 @@ export default function Home() {
 					))}
 				</div>
 			</main>
+
+			{ loading &&
+				<Loader loaderKey={loaderKey} />
+			}
+
 			<style jsx>{`
   @media (max-width: 915px) {
     .pyramid-layout { display: none !important; }
