@@ -65,7 +65,7 @@ export default function Home() {
 				<header className="w-full bg-green-800 py-4 px-8 flex items-center justify-between border-green-950 rounded-2xl shadow-neo-green ">
 					<div className="flex items-center gap-3">
 						<GiSpotedFlower className="h-8 w-8 text-pink-500" />
-						<h1 className="text-2xl font-bold text-pink-500">Azalea Mafia</h1>
+						<h1 className="text-2xl font-bold text-pink-500 hidden md:block">Azalea Mafia</h1>
 					</div>
 					<div className="flex gap-6 text-pink-500 font-semibold">
 						{sections.map((s) => (
@@ -103,7 +103,7 @@ export default function Home() {
 					</div>
 				</div>
 				{/* Vertical layout for ≤915px */}
-				<div className="vertical-layout flex-col gap-6 w-full max-w-md mx-auto pt-8" style={{ display: 'none' }}>
+				<div className="vertical-layout flex-col gap-6 w-full max-w-md mx-auto pt-8 px-4 md:px-12" style={{ display: 'none' }}>
 					{order.map((key) => (
 						<div key={key} className="bg-amber-50 border border-green-950 rounded-2xl shadow-neo-green flex flex-col justify-center items-center p-6">
 							{sectionMap[key].content}
