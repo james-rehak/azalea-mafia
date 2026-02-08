@@ -23,7 +23,7 @@ const sections = [
 	},
 	{
 		key: "timer",
-		name: "Happy Hour Timer",
+		name: "Happy Hour",
 		content: <HhTimer />,
 	},
 	{

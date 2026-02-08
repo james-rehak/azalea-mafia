@@ -5,17 +5,22 @@ const drinks = [
   { name: 'Gimlet', eggs: 0 },
   { name: 'Old Fashion', eggs: 0 },
   { name: 'Pisco Sour', eggs: 2 },
-  { name: 'Ramos Gin Fizz', eggs: 1 },
   { name: 'Negroni', eggs: 0 },
+  { name: 'Espresso Martini', eggs: 0 },
+  { name: 'Eggnog', eggs: 3 },
+  { name: 'Ramos Gin Fizz', eggs: 1 },
 ];
 
 export default function DrinkOrder() {
   return (
-    <div className="flex flex-col items-center gap-6 ">
-      <h2 className="text-3xl font-bold text-green-700 mb-6 text-center">
-        Place Your Drink Order!
+    <div className="flex flex-col items-center gap-6 overflow-y-auto max-h-96">
+      <h2
+        className="text-3xl font-bold text-green-700 mb-6 text-center"
+        title="Drink Order 🍸"
+      >
+        Submit Your Ticket!
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-md">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-md ">
         {drinks.map((drink) => (
           <button
             key={drink.name}
