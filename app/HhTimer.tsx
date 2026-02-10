@@ -60,7 +60,12 @@ export default function HhTimer() {
         Countdown to Happy Hour!
       </h2>
       <div className="text-2xl font-mono text-green-900 mb-2 text-center">
-        {remaining.days} Days {remaining.hours} Hours {remaining.minutes} Minutes {remaining.seconds} Seconds
+        <div className="whitespace-nowrap">
+          {remaining.days} Days <span className={remaining.hours > 12 ? "font-extrabold" : ""}>{remaining.hours} Hours</span>
+        </div>
+        <div className="whitespace-nowrap">
+          {remaining.minutes} Minutes {remaining.seconds} Seconds
+        </div>
       </div>
     </div>
   );
