@@ -35,9 +35,7 @@ export default function HhTimer() {
   // Initialize with zeros to avoid SSR/client mismatch
   const [remaining, setRemaining] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
-  const scalar = 10;
-  const heart = confetti.shapeFromText({ text: '❤️', scalar });
-  const flower = confetti.shapeFromText({ text: '🌷', scalar });
+  const scalar = 5;
 
 
   useEffect(() => {
@@ -60,7 +58,12 @@ export default function HhTimer() {
               particleCount: 220,
               spread: 120 + (i * 25),
               origin: { x: getRandomPoint(), y: getRandomPoint() },
-              shapes: isValentinesDay() ? [heart, heart, flower] : undefined,
+              shapes: isValentinesDay() ? [
+                confetti.shapeFromText({ text: '❤️', scalar }),
+                confetti.shapeFromText({ text: '❤️', scalar }),
+                confetti.shapeFromText({ text: '🌷', scalar })
+              ] : undefined,
+              scalar: isValentinesDay() ? scalar : undefined,
             });
           }, i * 500);
         });
