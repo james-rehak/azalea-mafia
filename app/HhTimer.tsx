@@ -26,9 +26,17 @@ function getRandomPoint():number {
   return 0.3 + Math.random() * 0.7;
 }
 
+function isValentinesDay(): boolean {
+  const now = new Date();
+  return now.getMonth() === 1 && now.getDate() >= 12 && now.getDate() <= 16; // February 14th Weekend
+}
+
 export default function HhTimer() {
   // Initialize with zeros to avoid SSR/client mismatch
   const [remaining, setRemaining] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  const scalar = 5;
+
 
   useEffect(() => {
     const updateCountdown = () => {
@@ -50,6 +58,12 @@ export default function HhTimer() {
               particleCount: 220,
               spread: 120 + (i * 25),
               origin: { x: getRandomPoint(), y: getRandomPoint() },
+              shapes: isValentinesDay() ? [
+                confetti.shapeFromText({ text: '❤️', scalar }),
+                confetti.shapeFromText({ text: '❤️', scalar }),
+                confetti.shapeFromText({ text: '🌷', scalar })
+              ] : undefined,
+              scalar: isValentinesDay() ? scalar : undefined,
             });
           }, i * 500);
         });
