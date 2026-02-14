@@ -7,9 +7,12 @@ type LoaderProps = {
 export default function Loader({ loaderKey }: LoaderProps) {
   const pets = [
     "/pets/archie.png",
+    "/pets/harley-bed.png",
     "/pets/cheddar.png",
-    // TODO Clark, Harley, JB
-    ];
+    "/pets/harley-ahh-1.png",
+    "/pets/clark.png",
+    "/pets/cheddar-1.png",
+  ];
 
   const petIndex = loaderKey % pets.length;
 
